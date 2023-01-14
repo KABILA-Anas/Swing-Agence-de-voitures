@@ -47,7 +47,7 @@ public class VoituresPanel extends JPanel {
 			Voiture V = (Voiture)I.next();
 			//GridBagConstraints gbc = new GridBagConstraints();
 			JPanel tmp = new JPanel();
-			tmp.setMaximumSize(new Dimension(600, 30));
+			tmp.setMaximumSize(new Dimension(600, 35));
 			tmp.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
 			tmp.setLayout(new GridLayout(1, 4));
 			tmp.add(new JLabel(V.getMarque()));
