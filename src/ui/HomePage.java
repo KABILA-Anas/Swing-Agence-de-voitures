@@ -29,7 +29,7 @@ public class HomePage extends JFrame {
 		
 		CD  = new ConsulterDonnees(A);
 		AV = new AjouterVoiture(A,myContent);
-		LV = new LouerVoiture(A);
+		LV = new LouerVoiture(this,A);
 		RV = new RendreVoiture(A);
 
 		//myContent.setLayout(getLayout());
@@ -41,7 +41,7 @@ public class HomePage extends JFrame {
 		myContent.add(header);
 		//this.pack();
 		this.setSize(900, 500);
-		this.setLocation(400, 200);
+		this.setLocation(200, 50);
 		this.setVisible(true);
 	}
 	

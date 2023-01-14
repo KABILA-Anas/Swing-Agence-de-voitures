@@ -153,7 +153,6 @@ public RendreVoiture(Agence A) {
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					A.rendVoiture(A.findClient(((JButton)e.getSource()).getName()));
-					
 					removeAll();
 					add(new RendreVoiture(A));
 					revalidate();
