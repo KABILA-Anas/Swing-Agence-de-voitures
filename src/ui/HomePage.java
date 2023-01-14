@@ -1,0 +1,59 @@
+package ui;
+
+import java.awt.Container;
+import java.util.ArrayList;
+
+import javax.swing.*;
+
+import gestionLocations.Agence;
+import gestionLocations.Voiture;
+
+public class HomePage extends JFrame {
+	
+	private Container myContent;
+	private  JTabbedPane header;
+	private ConsulterDonnees CD;
+	
+	public HomePage(Agence A) {
+		super("Agence de voitures");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		myContent = this.getContentPane();
+		
+		CD  = new ConsulterDonnees(A);
+		//myContent.setLayout(getLayout());
+		header = new JTabbedPane();
+		header.addTab("Consulter les donnees", CD);
+		header.addTab("Ajouter une voiture", null);
+		header.addTab("Louer une voiture", null);
+		header.addTab("Rendre une voiture", null);
+		myContent.add(header);
+		//this.pack();
+		this.setSize(850, 500);
+		this.setLocation(400, 200);
+		this.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		
+
+		Voiture v1, v2, v3, v4, v5, v6;
+		v1 = new Voiture("BMW", "M7", 2014, 95);
+		v2 = new Voiture("Mercedes", "Benz 1.6", 2016, 400);
+		v3 = new Voiture("Dacia", "DK", 2012, 90);
+		v4 = new Voiture("Maruti", "800 AC", 2007, 90);
+		v5 = new Voiture("Renault", "RXT", 2016, 90);
+		v6 = new Voiture("Mercedes", "Benz 1.8", 2017, 400);
+		ArrayList<Voiture> V = new ArrayList<Voiture>();
+		V.add(v1);
+		V.add(v2);
+		V.add(v3);
+		V.add(v4);
+		V.add(v5);
+		V.add(v6);
+		Agence agence = new Agence(V);
+		
+		//ConsulterDonnees CD = new ConsulterDonnees(CT, agence);
+		HomePage myHomePage = new HomePage(agence);
+	}
+	
+}
