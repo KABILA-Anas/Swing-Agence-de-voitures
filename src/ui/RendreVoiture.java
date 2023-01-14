@@ -21,9 +21,8 @@ public class RendreVoiture extends JPanel {
 	private boolean col;
 	private LouerVoiture LV;
 	
-	public RendreVoiture(Agence A, LouerVoiture LVC, JFrame myContent) {
+	public RendreVoiture(Agence A, JFrame myContent) {
 		
-		LV = LVC;
 		RendreVoiture copy = this;
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		//this.setBorder(new EtchedBorder (Color.BLACK, Color.BLACK));
@@ -158,11 +157,21 @@ public class RendreVoiture extends JPanel {
 					// TODO Auto-generated method stub
 					A.rendVoiture(A.findClient(((JButton)e.getSource()).getName()));
 					LV.removeAll();
-					LV.add(new LouerVoiture(myContent, A, copy));
+					removeAll();
+					LouerVoiture LVC = new LouerVoiture(myContent, A);
+					RendreVoiture RV = new RendreVoiture(A, myContent);
+					
+					LVC.setRV(RV);
+					RV.setLV(LV);
+					
+					LV.add(LVC);
+					//LV.setRV(RV);
 					LV.revalidate();
 					LV.repaint();
-					removeAll();
-					add(new RendreVoiture(A, LV, myContent));
+					
+					
+					
+					add(RV);
 					revalidate();
 					repaint();
 					/*tmp.add(P1);

@@ -16,8 +16,10 @@ public class AjouterVoiture extends JPanel {
     JPanel Form = new JPanel();
     String vmarque,vmodel;
     int vannee,vprix;
+    private LouerVoiture LV;
+    private RendreVoiture RV;
 
-    public AjouterVoiture(Agence A,Container myContent){
+    public AjouterVoiture(Agence A,JFrame myContent){
         //super("Ajouter voiture");
         Font f1 = new Font("Bold",Font.BOLD,18);
         Font f2 = new Font("Verdana",Font.PLAIN,16);
@@ -110,6 +112,22 @@ public class AjouterVoiture extends JPanel {
                         throw new AnneeEmptyException();
                     vannee = Integer.parseInt(tannee.getText());
                     A.ajouterVoiture(new Voiture(vmarque, vmodel, vannee, vprix));
+                    LV.removeAll();
+                    RV.removeAll();
+                    LouerVoiture LVC = new LouerVoiture(myContent, A);
+                    RendreVoiture RVC = new RendreVoiture(A,  myContent);
+                    
+                    LVC.setRV(RVC);
+                    RVC.setLV(LVC);
+                    
+                    //LV.setRV(RVC);
+					LV.add(LVC);
+					//RV.setLV(LVC);
+					RV.add(RVC);
+					LV.revalidate();
+					LV.repaint();
+					RV.revalidate();
+					RV.repaint();
                     System.out.println(A);
                     JOptionPane.showMessageDialog(myContent, "Voiture est ajouté");
                     tmarque.setText("");
@@ -137,6 +155,14 @@ public class AjouterVoiture extends JPanel {
         setVisible(true);
 
     }
+    
+    public void setLV(LouerVoiture LVC) {
+		LV = LVC;
+	}
+    
+    public void setRV(RendreVoiture RVC) {
+		RV = RVC;
+	}
 
     class MarqueEmptyException extends Exception{
         @Override

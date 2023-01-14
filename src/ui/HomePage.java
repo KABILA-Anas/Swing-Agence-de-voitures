@@ -28,11 +28,15 @@ public class HomePage extends JFrame {
 		myContent = this.getContentPane();
 		
 		CD  = new ConsulterDonnees(A);
-		AV = new AjouterVoiture(A,myContent);
-		RV = new RendreVoiture(A, LV, this);
-		LV = new LouerVoiture(this, A, RV);
+		AV = new AjouterVoiture(A,this);
+		RV = new RendreVoiture(A, this);
+		LV = new LouerVoiture(this, A);
 		
 		RV.setLV(LV);
+		LV.setRV(RV);
+		//RV.setLV(LV);
+		AV.setLV(LV);
+		AV.setRV(RV);
 		
 
 		//myContent.setLayout(getLayout());

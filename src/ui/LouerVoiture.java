@@ -21,8 +21,9 @@ import ui.AjouterVoiture.ModelEmptyException;
 import ui.AjouterVoiture.PrixEmptyException;
 
 public class LouerVoiture extends JPanel {
+	RendreVoiture RV;
 
-	public LouerVoiture(JFrame myframe , Agence A, RendreVoiture RV) {
+	public LouerVoiture(JFrame myframe , Agence A) {
 	
 		LouerVoiture copy = this;
 		
@@ -84,15 +85,23 @@ public class LouerVoiture extends JPanel {
 					
 					// this
 					removeAll();
-					add(new LouerVoiture(myframe, A, RV));
-					revalidate();
-					repaint();
+					LouerVoiture LV = new LouerVoiture(myframe, A);
+					RendreVoiture RVC = new RendreVoiture(A, myframe);
+					
+					RVC.setLV(LV);
+					LV.setRV(RV);
 					
 					//Updating rendre vioture
 					RV.removeAll();
-					RV.add(new RendreVoiture(A, copy, myframe));
+					RV.add(RVC);
+					//RV.setLV(LV);
 					RV.revalidate();
 					RV.repaint();
+					
+					
+					add(LV);
+					revalidate();
+					repaint();
 					
 					
 					
@@ -107,6 +116,9 @@ public class LouerVoiture extends JPanel {
 		
 	}
 	
+	 public void setRV(RendreVoiture RVC) {
+     	RV = RVC;
+     }
 	
 	public static void Louer(JFrame myframe,Agence A,Voiture V) {
 		
@@ -235,6 +247,8 @@ public class LouerVoiture extends JPanel {
                tcivilte.setSelectedIndex(0);
             }
         });
+        
+       
 	    
         //
         modelDialog.add(Form,BorderLayout.NORTH);
