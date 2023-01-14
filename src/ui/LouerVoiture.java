@@ -81,14 +81,20 @@ public class LouerVoiture extends JPanel {
 					int Vnumber = Integer.parseInt(((JButton)e.getSource()).getName());
 					List<Voiture> vnl = A.lesVoituresNonLouees();
 					Louer(myframe,A,vnl.get(Vnumber-1));
+					
+					// this
 					removeAll();
+					add(new LouerVoiture(myframe, A, RV));
+					revalidate();
+					repaint();
+					
+					//Updating rendre vioture
 					RV.removeAll();
 					RV.add(new RendreVoiture(A, copy, myframe));
 					RV.revalidate();
 					RV.repaint();
-					add(new LouerVoiture(myframe, A, RV));
-					revalidate();
-					repaint();
+					
+					
 					
 					/*removeAll();
 					add(new LouerVoiture(A));
