@@ -26,7 +26,7 @@ public class HomePage extends JFrame {
 		myContent = this.getContentPane();
 		
 		CD  = new ConsulterDonnees(A);
-		AV = new AjouterVoiture(A);
+		AV = new AjouterVoiture(A,myContent);
 		//myContent.setLayout(getLayout());
 		header = new JTabbedPane();
 		header.addTab("Consulter les donnees", CD);
