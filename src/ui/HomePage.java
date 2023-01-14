@@ -19,6 +19,7 @@ public class HomePage extends JFrame {
 	private  JTabbedPane header;
 	private ConsulterDonnees CD;
 	private AjouterVoiture AV;
+	private RendreVoiture RV;
 	
 	public HomePage(Agence A) {
 		super("Agence de voitures");
@@ -26,16 +27,17 @@ public class HomePage extends JFrame {
 		myContent = this.getContentPane();
 		
 		CD  = new ConsulterDonnees(A);
-		AV = new AjouterVoiture(A);
+		AV = new AjouterVoiture(A,myContent);
+		RV = new RendreVoiture(A);
 		//myContent.setLayout(getLayout());
 		header = new JTabbedPane();
 		header.addTab("Consulter les donnees", CD);
 		header.addTab("Ajouter une voiture", AV);
 		header.addTab("Louer une voiture", null);
-		header.addTab("Rendre une voiture", null);
+		header.addTab("Rendre une voiture", RV);
 		myContent.add(header);
 		//this.pack();
-		this.setSize(850, 500);
+		this.setSize(900, 500);
 		this.setLocation(400, 200);
 		this.setVisible(true);
 	}
