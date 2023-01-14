@@ -22,8 +22,10 @@ import ui.AjouterVoiture.PrixEmptyException;
 
 public class LouerVoiture extends JPanel {
 
-	public LouerVoiture(JFrame myframe , Agence A) {
+	public LouerVoiture(JFrame myframe , Agence A, RendreVoiture RV) {
 	
+		LouerVoiture copy = this;
+		
 		Iterator<Voiture> I = (A.lesVoituresNonLouees()).iterator();
 	
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -80,7 +82,11 @@ public class LouerVoiture extends JPanel {
 					List<Voiture> vnl = A.lesVoituresNonLouees();
 					Louer(myframe,A,vnl.get(Vnumber-1));
 					removeAll();
-					add(new LouerVoiture(myframe,A));
+					RV.removeAll();
+					RV.add(new RendreVoiture(A, copy, myframe));
+					RV.revalidate();
+					RV.repaint();
+					add(new LouerVoiture(myframe, A, RV));
 					revalidate();
 					repaint();
 					

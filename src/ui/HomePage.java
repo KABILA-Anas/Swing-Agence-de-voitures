@@ -29,8 +29,8 @@ public class HomePage extends JFrame {
 		
 		CD  = new ConsulterDonnees(A);
 		AV = new AjouterVoiture(A,myContent);
-		LV = new LouerVoiture(this,A);
-		RV = new RendreVoiture(A);
+		LV = new LouerVoiture(this, A, RV);
+		RV = new RendreVoiture(A, LV, this);
 
 		//myContent.setLayout(getLayout());
 		header = new JTabbedPane();

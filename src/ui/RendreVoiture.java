@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -18,9 +19,12 @@ import gestionLocations.Voiture;
 
 public class RendreVoiture extends JPanel {
 	private boolean col;
+	//LouerVoiture LV;
 	
-public RendreVoiture(Agence A) {
+	public RendreVoiture(Agence A, LouerVoiture LV, JFrame myContent) {
 		
+		//LV = LVc;
+		RendreVoiture copy = this;
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		//this.setBorder(new EtchedBorder (Color.BLACK, Color.BLACK));
 		
@@ -153,8 +157,12 @@ public RendreVoiture(Agence A) {
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					A.rendVoiture(A.findClient(((JButton)e.getSource()).getName()));
+					LV.removeAll();
+					LV.add(new LouerVoiture(myContent, A, copy));
+					LV.revalidate();
+					LV.repaint();
 					removeAll();
-					add(new RendreVoiture(A));
+					add(new RendreVoiture(A, LV, myContent));
 					revalidate();
 					repaint();
 					/*tmp.add(P1);
