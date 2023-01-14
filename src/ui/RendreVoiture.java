@@ -19,11 +19,11 @@ import gestionLocations.Voiture;
 
 public class RendreVoiture extends JPanel {
 	private boolean col;
-	//LouerVoiture LV;
+	private LouerVoiture LV;
 	
-	public RendreVoiture(Agence A, LouerVoiture LV, JFrame myContent) {
+	public RendreVoiture(Agence A, LouerVoiture LVC, JFrame myContent) {
 		
-		//LV = LVc;
+		LV = LVC;
 		RendreVoiture copy = this;
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		//this.setBorder(new EtchedBorder (Color.BLACK, Color.BLACK));
@@ -176,5 +176,9 @@ public class RendreVoiture extends JPanel {
 			
 			
 		}
+	}
+	
+	public void setLV(LouerVoiture LVC) {
+		LV = LVC;
 	}
 }
