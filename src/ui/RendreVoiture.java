@@ -122,6 +122,7 @@ public RendreVoiture(Agence A) {
 			tmp.setMaximumSize(new Dimension(800, 35));
 			tmp.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
 			tmp.setLayout(new BoxLayout(tmp, BoxLayout.X_AXIS));
+			//tmp.setLayout(new GridLayout(1, 3));
 			
 			P1.add(new JLabel(C.getNom()));
 			P1.add(new JLabel(C.getPrenom()));
