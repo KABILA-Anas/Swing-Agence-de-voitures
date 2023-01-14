@@ -28,7 +28,9 @@ public class HomePage extends JFrame {
 		
 		CD  = new ConsulterDonnees(A);
 		AV = new AjouterVoiture(A,myContent);
+
 		RV = new RendreVoiture(A);
+
 		//myContent.setLayout(getLayout());
 		header = new JTabbedPane();
 		header.addTab("Consulter les donnees", CD);

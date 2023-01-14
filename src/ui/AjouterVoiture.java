@@ -16,16 +16,15 @@ public class AjouterVoiture extends JPanel {
     JPanel Form = new JPanel();
     String vmarque,vmodel;
     int vannee,vprix;
-    //Agence agence = new Agence();
 
-    public AjouterVoiture(Agence A){
+    public AjouterVoiture(Agence A,Container myContent){
         //super("Ajouter voiture");
         Font f1 = new Font("Bold",Font.BOLD,18);
         Font f2 = new Font("Verdana",Font.PLAIN,16);
         //Initialisation
         titre = new JLabel("Ajouter nouvelle voiture");
         marque = new JLabel("Marque");
-        model = new JLabel("Modele");
+        model = new JLabel("Modèle");
         prix = new JLabel("Prix");
         annee = new JLabel("Annee");
 
@@ -40,9 +39,9 @@ public class AjouterVoiture extends JPanel {
 
         submit = new JButton("Enregistrer");
         submit.setBackground(Color.GREEN);
-        submit.setPreferredSize(new Dimension(300, 50));
+        submit.setPreferredSize(new Dimension(100, 30));
         reset = new JButton("Reset");
-        reset.setPreferredSize(new Dimension(300, 50));
+        reset.setPreferredSize(new Dimension(100, 30));
         reset.setBackground(Color.LIGHT_GRAY);
         //Customizing
         titre.setFont(f1);
@@ -66,12 +65,12 @@ public class AjouterVoiture extends JPanel {
         //
         JPanel pprix = new JPanel();
         pprix.add(prix,BorderLayout.CENTER);
-        pprix.add(pprix.add(Box.createHorizontalStrut(80)));
+        pprix.add(pprix.add(Box.createHorizontalStrut(110)));
         pprix.add(tprix,BorderLayout.SOUTH);
         //
         JPanel pannee = new JPanel();
         pannee.add(annee,BorderLayout.CENTER);
-        pannee.add(pannee.add(Box.createHorizontalStrut(80)));
+        pannee.add(pannee.add(Box.createHorizontalStrut(90)));
         pannee.add(tannee,BorderLayout.SOUTH);
         //
         JPanel pbuttons = new JPanel();
@@ -81,17 +80,17 @@ public class AjouterVoiture extends JPanel {
         //
         Form = new JPanel();
         Form.setLayout(new BoxLayout(Form, BoxLayout.Y_AXIS));
-        Form.add(Form.add(Box.createVerticalStrut(100)));
+        Form.add(Form.add(Box.createVerticalStrut(30)));
         Form.add(ptitre);
-        Form.add(Form.add(Box.createVerticalStrut(60)));
+        Form.add(Form.add(Box.createVerticalStrut(10)));
         Form.add(pmarque);
-        Form.add(Form.add(Box.createVerticalStrut(60)));
+        Form.add(Form.add(Box.createVerticalStrut(10)));
         Form.add(pmodel);
-        Form.add(Form.add(Box.createVerticalStrut(60)));
+        Form.add(Form.add(Box.createVerticalStrut(10)));
         Form.add(pprix);
-        Form.add(Form.add(Box.createVerticalStrut(60)));
+        Form.add(Form.add(Box.createVerticalStrut(10)));
         Form.add(pannee);
-        Form.add(Form.add(Box.createVerticalStrut(60)));
+        Form.add(Form.add(Box.createVerticalStrut(10)));
         Form.add(pbuttons);
         //Actions
         submit.addActionListener(new ActionListener(){
@@ -112,15 +111,15 @@ public class AjouterVoiture extends JPanel {
                     vannee = Integer.parseInt(tannee.getText());
                     A.ajouterVoiture(new Voiture(vmarque, vmodel, vannee, vprix));
                     System.out.println(A);
-                    //JOptionPane.showMessageDialog(getContentPane(), "Voiture est ajouté");
+                    JOptionPane.showMessageDialog(myContent, "Voiture est ajouté");
                     tmarque.setText("");
                     tmodel.setText("");
                     tprix.setText("");
                     tannee.setText("");
                 }catch(NumberFormatException exception){
-                    //JOptionPane.showMessageDialog(getContentPane(), "Annee et prix doivent etre integers");
+                    JOptionPane.showMessageDialog(myContent, "Annee et prix doivent etre integers");
                 }catch(Exception exception){
-                    //JOptionPane.showMessageDialog(getContentPane(), exception);
+                    JOptionPane.showMessageDialog(myContent, exception);
                 }
             }
         });
