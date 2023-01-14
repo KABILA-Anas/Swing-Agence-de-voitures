@@ -36,5 +36,30 @@ public class ConsultTypes extends JPanel {
 		add(locations);
 		this.setBorder(new EtchedBorder ());
 	}
+
+	public JRadioButton getVoitures() {
+		return voitures;
+	}
+
+	
+
+	public JRadioButton getVoituresLoue() {
+		return voituresLoue;
+	}
+
+	
+
+	public JRadioButton getClients() {
+		return clients;
+	}
+
+	
+	public JRadioButton getLocations() {
+		return locations;
+	}
+
+	
+	
+	
 	
 }

@@ -1,6 +1,7 @@
 package gestionLocations;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 import criteres.Critere;
 
@@ -22,6 +23,9 @@ public class Agence {
 		Locations = new TreeMap<Client, Voiture>();
 	}
 	
+	public  Set<Entry<Client, Voiture>> lesLocations(){
+		return Locations.entrySet();
+	}
 	
 	
 	
@@ -113,6 +117,8 @@ public class Agence {
 		for(Map.Entry<Client, Voiture> M : Locations.entrySet())
 			System.out.println(M.getKey() + " ==> " + M.getValue());
 	}
+	
+	
 	
 	public void afficherVoitures(Critere C) {
 		for(Voiture V : voitures)

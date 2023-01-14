@@ -20,6 +20,8 @@ public class ConsulterDonnees extends JPanel {
 	
 	private JPanel mainPanel;
 	private VoituresPanel VP;
+	private ClientsPanel CP;
+	private LocationsPanel LP;
 	private ConsultTypes CT;
 	private JLabel inputs;
 	private JTextField marque;
@@ -147,12 +149,82 @@ public class ConsulterDonnees extends JPanel {
 					IC.addCritere(new CriterePrix(Integer.parseInt(p)));
 
 				removeAll();
+				VP = new VoituresPanel(A.selectionne(IC));
 				add("West", P);
 				add("North", CT);
-				add("Center", new VoituresPanel(A.selectionne(IC)));
+				add("Center", VP);
 
 			}
 
+		});
+		
+		CT.getVoitures().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				/*remove(VP);
+				remove(P);
+				VP = new VoituresPanel(A.lesVoituresLouees());
+				add("Center", VP);*/
+				removeAll();
+				VP = new VoituresPanel(A.selectionne(IC));
+				add("West", P);
+				add("North", CT);
+				add("Center", VP);
+			}
+			
+		});
+		
+		CT.getVoituresLoue().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				/*remove(VP);
+				remove(P);
+				VP = new VoituresPanel(A.lesVoituresLouees());
+				add("Center", VP);*/
+				removeAll();
+				VP = new VoituresPanel(A.lesVoituresLouees());
+				add("North", CT);
+				add("Center", VP);
+			}
+			
+		});
+		
+		CT.getClients().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				/*remove(VP);
+				remove(P);
+				VP = new VoituresPanel(A.lesVoituresLouees());
+				add("Center", VP);*/
+				removeAll();
+				CP = new ClientsPanel(A.lesClients());
+				add("North", CT);
+				add("Center", CP);
+			}
+			
+		});
+		
+		CT.getLocations().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				/*remove(VP);
+				remove(P);
+				VP = new VoituresPanel(A.lesVoituresLouees());
+				add("Center", VP);*/
+				removeAll();
+				LP = new LocationsPanel(A.lesLocations());
+				add("North", CT);
+				add("Center", LP);
+			}
+			
 		});
 
 	}

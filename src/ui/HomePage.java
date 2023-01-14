@@ -6,7 +6,12 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import gestionLocations.Agence;
+import gestionLocations.Civilite;
+import gestionLocations.Client;
 import gestionLocations.Voiture;
+import gestionLocations.Agence.ClientEstLoueurException;
+import gestionLocations.Agence.VoitureEstLoueException;
+import gestionLocations.Agence.VoitureNotFoundException;
 
 public class HomePage extends JFrame {
 	
@@ -51,6 +56,20 @@ public class HomePage extends JFrame {
 		V.add(v5);
 		V.add(v6);
 		Agence agence = new Agence(V);
+		Client c1, c2, c3;
+		c1 = new Client("KABILA", "Anas", "cin1", Civilite.M);
+		c2 = new Client("JRAIFY", "Yassine", "cin2", Civilite.M);
+		c3 = new Client("ELON", "Musk", "cin3", Civilite.M);
+		
+		try {
+			agence.loueVoiture(c1, v1);
+			agence.loueVoiture(c2, v2);
+			agence.loueVoiture(c3, v3);
+			//System.out.println("hello");
+		} catch (VoitureNotFoundException | VoitureEstLoueException | ClientEstLoueurException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		//ConsulterDonnees CD = new ConsulterDonnees(CT, agence);
 		HomePage myHomePage = new HomePage(agence);

@@ -24,6 +24,18 @@ public class Client implements Comparable {
 	public String getCin() {
 		return CIN;
 	}
+	
+	public String getNom() {
+		return nom;
+	}
+	
+	public String getPrenom() {
+		return prenom;
+	}
+	
+	public String getCivilite() {
+		return civilite.toString();
+	}
 
 
 	@Override
