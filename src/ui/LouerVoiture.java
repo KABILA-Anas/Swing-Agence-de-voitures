@@ -150,7 +150,7 @@ public class LouerVoiture extends JPanel {
         tprenom.setPreferredSize(new Dimension(210, 30));
         tcin  = new JTextField();
         tcin.setPreferredSize(new Dimension(210, 30));
-        String[] civilities = {"M","Mme","Mlle"};
+        String[] civilities = {"M","Mme","MLLe"};
         tcivilte  = new JComboBox(civilities);
         tcivilte.setPreferredSize(new Dimension(210, 30));
 
