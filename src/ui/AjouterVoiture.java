@@ -41,8 +41,8 @@ public class AjouterVoiture extends JPanel {
 
     public AjouterVoiture(Agence A,JFrame myContent){
         //super("Ajouter voiture");
-        Font f1 = new Font("Bold",Font.BOLD,18);
-        Font f2 = new Font("Verdana",Font.PLAIN,16);
+        Font f1 = new Font("Bold",Font.BOLD,22);
+        Font f2 = new Font("Bold",Font.BOLD,18);
         //Initialisation
         titre = new JLabel("Ajouter nouvelle voiture");
         marque = new JLabel("Marque");
@@ -80,11 +80,9 @@ public class AjouterVoiture extends JPanel {
         tannee.setFont(f3);
 
         submit = new JButton("Enregistrer");
-        submit.setBackground(Color.GREEN);
         submit.setPreferredSize(new Dimension(200, 30));
         reset = new JButton("Reset");
         reset.setPreferredSize(new Dimension(200, 30));
-        reset.setBackground(Color.LIGHT_GRAY);
         //Customizing
         titre.setFont(f1);
         marque.setFont(f2);
@@ -97,24 +95,24 @@ public class AjouterVoiture extends JPanel {
         ptitre.add(titre,BorderLayout.CENTER);
         //
         JPanel pmarque = new JPanel();
-        pmarque.add(marque,BorderLayout.CENTER);
+        pmarque.add(marque);
         pmarque.add(pmarque.add(Box.createHorizontalStrut(80)));
-        pmarque.add(tmarque,BorderLayout.SOUTH);
+        pmarque.add(tmarque);
         //
         JPanel pmodel = new JPanel();
-        pmodel.add(model,BorderLayout.CENTER);
+        pmodel.add(model);
         pmodel.add(pmodel.add(Box.createHorizontalStrut(80)));
-        pmodel.add(tmodel,BorderLayout.SOUTH);
+        pmodel.add(tmodel);
         //
         JPanel pprix = new JPanel();
-        pprix.add(prix,BorderLayout.CENTER);
-        pprix.add(pprix.add(Box.createHorizontalStrut(100)));
-        pprix.add(tprix,BorderLayout.SOUTH);
+        pprix.add(prix);
+        pprix.add(pprix.add(Box.createHorizontalStrut(110)));
+        pprix.add(tprix);
         //
         JPanel pannee = new JPanel();
-        pannee.add(annee,BorderLayout.CENTER);
-        pannee.add(pannee.add(Box.createHorizontalStrut(80)));
-        pannee.add(tannee,BorderLayout.SOUTH);
+        pannee.add(annee);
+        pannee.add(pannee.add(Box.createHorizontalStrut(90)));
+        pannee.add(tannee);
         //
         JPanel pbuttons = new JPanel();
         pbuttons.add(reset,BorderLayout.CENTER);
@@ -212,6 +210,7 @@ public class AjouterVoiture extends JPanel {
         });
         //
         JPanel FormContainer = new JPanel();
+        FormContainer.setBackground(Color.WHITE);
         FormContainer.setLayout(new BoxLayout(FormContainer, BoxLayout.Y_AXIS));
         FormContainer.add(FormContainer.add(Box.createVerticalStrut(20)));
         FormContainer.add(Form);

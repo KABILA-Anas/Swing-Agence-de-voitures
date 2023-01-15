@@ -44,9 +44,9 @@ public class RendreVoiture extends JPanel {
 		//client.setForeground(Color.WHITE);
 		voiture = new JLabel("Voitures");
 		clientP.add(client);
-		clientP.setBackground(Color.magenta);
+		clientP.setBackground(HomePage.Floral);
 		voitureP.add(voiture);
-		voitureP.setBackground(Color.LIGHT_GRAY);
+		voitureP.setBackground(HomePage.Pale);
 		videP.setLayout(new BoxLayout(videP, BoxLayout.X_AXIS));
 		//clientP.setBorder(new EtchedBorder (Color.BLACK, Color.CYAN));
 		JButton rendre1 = new JButton("Rendre");
@@ -115,12 +115,13 @@ public class RendreVoiture extends JPanel {
 			P1.setMaximumSize(new Dimension(400, 35));
 			P2.setMaximumSize(new Dimension(400, 35));
 			if(col) {
-				P1.setBackground(Color.magenta);
-				col = !col;
-			} else {
-				P2.setBackground(Color.LIGHT_GRAY);
-				col = !col;
+				P1.setBackground(HomePage.Pale);
+				P2.setBackground(HomePage.Floral);
+			}else {
+				P2.setBackground(HomePage.Pale);
+				P1.setBackground(HomePage.Floral);
 			}
+			col = !col;
 			
 			tmp.setMaximumSize(new Dimension(800, 35));
 			tmp.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
@@ -140,6 +141,8 @@ public class RendreVoiture extends JPanel {
 			JButton rendre = new JButton("  Rendre  ");
 			rendre.setName(C.getCin());
 			rendre.setSize(new Dimension(50, 35));
+			rendre.setForeground(Color.WHITE);
+			rendre.setBackground(HomePage.Flame);
 			//P3.setSize(new Dimension(200, 35));
 			P3.add(rendre);
 			P3.setLayout(new BoxLayout(P3, BoxLayout.X_AXIS));

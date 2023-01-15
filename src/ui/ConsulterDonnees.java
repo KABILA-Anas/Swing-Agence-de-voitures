@@ -260,11 +260,13 @@ public class ConsulterDonnees extends JPanel {
 				add("Center", VP);*/
 				removeAll();
 				CP = new ClientsPanel(A.lesClients());
-				
 				CP.setBackground(Color.WHITE);
 				CT.setBackground(Color.WHITE);
+				
 				add("North", CT);
 				add("Center", CP);
+				
+
 			}
 			
 		});

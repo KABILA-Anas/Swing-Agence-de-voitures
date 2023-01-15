@@ -8,17 +8,21 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
+import javax.swing.border.MatteBorder;
 
 import gestionLocations.*;
 import ui.AjouterVoiture.AnneeEmptyException;
 import ui.AjouterVoiture.MarqueEmptyException;
 import ui.AjouterVoiture.ModelEmptyException;
 import ui.AjouterVoiture.PrixEmptyException;
+
 
 public class LouerVoiture extends JPanel {
 	RendreVoiture RV;
@@ -143,14 +147,14 @@ public class LouerVoiture extends JPanel {
 	    JPanel Form = new JPanel();
 	    
 	    
-	    Font f1 = new Font("Bold",Font.BOLD,18);
-        Font f2 = new Font("Verdana",Font.PLAIN,16);
+	    Font f1 = new Font("Bold",Font.BOLD,22);
+        Font f2 = new Font("Bold",Font.BOLD,18);
         //Initialisation
         titre = new JLabel("Ajouter Client");
-        nom = new JLabel("nom     ");
-        prenom = new JLabel("prenom");
-        cin = new JLabel("cin  ");
-        civilte = new JLabel("civilte  ");
+        nom = new JLabel("Nom     ");
+        prenom = new JLabel("Prénom");
+        cin = new JLabel("Cin  ");
+        civilte = new JLabel("Civilité  ");
 
         tnom  = new JTextField();
         tnom.setPreferredSize(new Dimension(210, 30));
@@ -163,17 +167,28 @@ public class LouerVoiture extends JPanel {
         tcivilte.setPreferredSize(new Dimension(210, 30));
 
         submit = new JButton("Enregistrer");
-        submit.setBackground(Color.GREEN);
         submit.setPreferredSize(new Dimension(200, 30));
         reset = new JButton("Reset");
         reset.setPreferredSize(new Dimension(200, 30));
-        reset.setBackground(Color.LIGHT_GRAY);
         //Customizing
         titre.setFont(f1);
         nom.setFont(f2);
         prenom.setFont(f2);
         cin.setFont(f2);
         civilte.setFont(f2);
+        //
+        Font f3 = new Font("Verdana",Font.BOLD,12);
+		tnom.setFont(f3);
+        tprenom.setFont(f3);
+        tcin.setFont(f3);
+        reset.setBackground(HomePage.Floral);
+        submit.setBackground(HomePage.Eerie);
+        submit.setForeground(Color.WHITE);
+        //
+        /**Add event**/
+        tnom.addFocusListener(new ClickFocus());
+        tprenom.addFocusListener(new ClickFocus());
+        tcin.addFocusListener(new ClickFocus());
         //
         JPanel ptitre = new JPanel();
         ptitre.add(titre,BorderLayout.CENTER);
