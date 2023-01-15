@@ -12,6 +12,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.MatteBorder;
 
 import criteres.*;
 import gestionLocations.Agence;
@@ -49,6 +51,9 @@ public class ConsulterDonnees extends JPanel {
 		annee.setMaximumSize(new Dimension(310, 30));
 		prix.setMaximumSize(new Dimension(310, 30));
 		
+		//marque.setBorder(new EtchedBorder (Color.BLACK, Color.BLACK));
+		
+		
 		/*marque.addMouseListener(new MouseAdapter() {
 			@Override
             public void mouseClicked(MouseEvent e){
@@ -64,6 +69,7 @@ public class ConsulterDonnees extends JPanel {
 				// TODO Auto-generated method stub
 				if(marque.getText().startsWith("Enter une marque"))
 					marque.setText("");
+				
 			}
 
 			@Override
