@@ -142,9 +142,9 @@ public class AjouterVoiture extends JPanel {
                     tprix.setText("");
                     tannee.setText("");
                 }catch(NumberFormatException exception){
-                    JOptionPane.showMessageDialog(myContent, "Annee et prix doivent etre integers");
+                    JOptionPane.showMessageDialog(myContent, "Annee et prix doivent etre integers" ,"Fatal error",JOptionPane.ERROR_MESSAGE);
                 }catch(Exception exception){
-                    JOptionPane.showMessageDialog(myContent, exception);
+                    JOptionPane.showMessageDialog(myContent, exception ,"Fatal error",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

@@ -158,7 +158,7 @@ public class ConsulterDonnees extends JPanel {
 					add("North", CT);
 					add("Center", VP);
 				}catch(NumberFormatException exception){
-                    JOptionPane.showMessageDialog(myContent, "Annee et prix doivent etre integers");
+                    JOptionPane.showMessageDialog(myContent,"Annee et prix doivent etre integers" ,"Fatal error",JOptionPane.ERROR_MESSAGE);;
 				}    
 				
 
