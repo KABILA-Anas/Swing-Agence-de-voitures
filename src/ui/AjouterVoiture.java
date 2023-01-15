@@ -4,7 +4,7 @@ import gestionLocations.Agence;
 import gestionLocations.Voiture;
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
+import javax.swing.border.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -29,8 +29,8 @@ public class AjouterVoiture extends JPanel {
         titre = new JLabel("Ajouter nouvelle voiture");
         marque = new JLabel("Marque");
         model = new JLabel("Modèle");
-        prix = new JLabel("Prix");
-        annee = new JLabel("Annee");
+        prix = new JLabel(" Prix");
+        annee = new JLabel(" Annee");
 
         tmarque  = new JTextField();
         tmarque.setPreferredSize(new Dimension(210, 30));
@@ -69,12 +69,12 @@ public class AjouterVoiture extends JPanel {
         //
         JPanel pprix = new JPanel();
         pprix.add(prix,BorderLayout.CENTER);
-        pprix.add(pprix.add(Box.createHorizontalStrut(110)));
+        pprix.add(pprix.add(Box.createHorizontalStrut(100)));
         pprix.add(tprix,BorderLayout.SOUTH);
         //
         JPanel pannee = new JPanel();
         pannee.add(annee,BorderLayout.CENTER);
-        pannee.add(pannee.add(Box.createHorizontalStrut(90)));
+        pannee.add(pannee.add(Box.createHorizontalStrut(80)));
         pannee.add(tannee,BorderLayout.SOUTH);
         //
         JPanel pbuttons = new JPanel();
@@ -84,9 +84,11 @@ public class AjouterVoiture extends JPanel {
         //
         Form = new JPanel();
         Form.setLayout(new BoxLayout(Form, BoxLayout.Y_AXIS));
-        Form.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
-        submit.setBorder(BorderFactory.createLineBorder(Color.black));
-        //Form.add(Form.add(Box.createVerticalStrut(30)));
+        //Borders
+        Form.setBorder(new BevelBorder(BevelBorder.RAISED) );
+        submit.setBorder(BorderFactory.createLineBorder(Color.RED));
+        reset.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+        //
         Form.add(ptitre);
         Form.add(Form.add(Box.createVerticalStrut(40)));
         Form.add(pmarque);
@@ -140,9 +142,9 @@ public class AjouterVoiture extends JPanel {
                     tprix.setText("");
                     tannee.setText("");
                 }catch(NumberFormatException exception){
-                    JOptionPane.showMessageDialog(myContent, "Annee et prix doivent etre integers");
+                    JOptionPane.showMessageDialog(myContent, "Annee et prix doivent etre integers" ,"Fatal error",JOptionPane.ERROR_MESSAGE);
                 }catch(Exception exception){
-                    JOptionPane.showMessageDialog(myContent, exception);
+                    JOptionPane.showMessageDialog(myContent, exception ,"Fatal error",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

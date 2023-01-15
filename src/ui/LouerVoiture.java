@@ -234,7 +234,7 @@ public class LouerVoiture extends JPanel {
                     JOptionPane.showMessageDialog(myContent, vnom+" à bien loué "+V.getMarque());
                     modelDialog.dispose();
                 }catch(Exception exception){
-                    JOptionPane.showMessageDialog(myContent, exception);
+                    JOptionPane.showMessageDialog(myContent, exception,"Fatal Error",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
