@@ -41,7 +41,7 @@ public class LouerVoiture extends JPanel {
 		Marque.setForeground(Color.WHITE);
 		Model = new JLabel("Model");
 		Model.setForeground(Color.WHITE);
-		Annee = new JLabel("Annee de production");
+		Annee = new JLabel("Annee");
 		Annee.setForeground(Color.WHITE);
 		Prix = new JLabel("Prix");
 		Prix.setForeground(Color.WHITE);

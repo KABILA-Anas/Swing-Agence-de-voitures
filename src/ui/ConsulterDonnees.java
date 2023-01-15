@@ -41,7 +41,8 @@ public class ConsulterDonnees extends JPanel {
 		prix = new JTextField("Enter un prix maximale");
 		search = new JButton("Search");
 		
-		search.setBackground(Color.LIGHT_GRAY);
+		search.setBackground(Color.DARK_GRAY);
+		search.setForeground(Color.WHITE);
 		
 		//inputs.setSize(new Dimension(300, 100));
 		marque.setMaximumSize(new Dimension(310, 30));
@@ -115,6 +116,7 @@ public class ConsulterDonnees extends JPanel {
 		
 		JPanel P = new JPanel();
 		P.setLayout(new BoxLayout(P, BoxLayout.Y_AXIS));
+		P.setBackground(Color.LIGHT_GRAY);
 		//P.setAlignmentY(LEFT_ALIGNMENT);
 		
 		P.add(P.add(Box.createVerticalStrut(15)));
