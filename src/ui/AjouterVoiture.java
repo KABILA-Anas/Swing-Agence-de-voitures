@@ -9,6 +9,24 @@ import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
+class ClickFocus implements FocusListener {
+
+	@Override
+	public void focusGained(FocusEvent e) {
+		// TODO Auto-generated method stub
+		((JTextField)e.getSource()).setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
+		// TODO Auto-generated method stub
+		((JTextField)e.getSource()).setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
+	}
+	
+}
 
 public class AjouterVoiture extends JPanel {
 
@@ -29,8 +47,8 @@ public class AjouterVoiture extends JPanel {
         titre = new JLabel("Ajouter nouvelle voiture");
         marque = new JLabel("Marque");
         model = new JLabel("Modèle");
-        prix = new JLabel(" Prix");
-        annee = new JLabel(" Annee");
+        prix = new JLabel("Prix");
+        annee = new JLabel("Annee");
 
         tmarque  = new JTextField();
         tmarque.setPreferredSize(new Dimension(210, 30));
@@ -40,6 +58,20 @@ public class AjouterVoiture extends JPanel {
         tprix.setPreferredSize(new Dimension(210, 30));
         tannee  = new JTextField();
         tannee.setPreferredSize(new Dimension(210, 30));
+        
+        /**Add event**/
+        tmarque.addFocusListener(new ClickFocus());
+        tmodel.addFocusListener(new ClickFocus());
+        tprix.addFocusListener(new ClickFocus());
+        tannee.addFocusListener(new ClickFocus());
+        
+        /**Change font**/
+        //Font f3 = new Font("Verdana",Font.PLAIN,12);
+		Font f3 = new Font("Verdana",Font.BOLD,12);
+		tmarque.setFont(f3);
+        tmodel.setFont(f3);
+        tprix.setFont(f3);
+        tannee.setFont(f3);
 
         submit = new JButton("Enregistrer");
         submit.setBackground(Color.GREEN);
@@ -102,6 +134,26 @@ public class AjouterVoiture extends JPanel {
         Form.add(pbuttons);
         //Form.add(Form.add(Box.createVerticalStrut(10)));
         //Actions
+        
+        
+        
+        /*tmarque.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				tmarque.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
+				
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+				tmarque.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
+			}
+			
+		});*/
+        
         submit.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
 

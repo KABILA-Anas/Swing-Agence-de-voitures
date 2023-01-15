@@ -33,6 +33,10 @@ public class ConsulterDonnees extends JPanel {
 	private InterCritere IC = new InterCritere();
 	
 	public ConsulterDonnees(Agence A,Container myContent) {
+		
+		Font f1 = new Font("Verdana",Font.PLAIN,12);
+		Font f2 = new Font("Verdana",Font.BOLD,12);
+		
 		this.setLayout(new BorderLayout());
 		CT = new ConsultTypes();
 		VP = new VoituresPanel(A.selectionne(IC));
@@ -47,9 +51,15 @@ public class ConsulterDonnees extends JPanel {
 		search.setForeground(Color.WHITE);
 		
 		//inputs.setSize(new Dimension(300, 100));
-		marque.setMaximumSize(new Dimension(310, 30));
-		annee.setMaximumSize(new Dimension(310, 30));
-		prix.setMaximumSize(new Dimension(310, 30));
+		marque.setMaximumSize(new Dimension(340, 30));
+		annee.setMaximumSize(new Dimension(340, 30));
+		prix.setMaximumSize(new Dimension(340, 30));
+		
+		marque.setFont(f1);
+		annee.setFont(f1);
+		prix.setFont(f1);
+		
+		
 		
 		//marque.setBorder(new EtchedBorder (Color.BLACK, Color.BLACK));
 		
@@ -69,14 +79,19 @@ public class ConsulterDonnees extends JPanel {
 				// TODO Auto-generated method stub
 				if(marque.getText().startsWith("Enter une marque"))
 					marque.setText("");
+				marque.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
+				marque.setFont(f2);
 				
 			}
 
 			@Override
 			public void focusLost(FocusEvent e) {
 				// TODO Auto-generated method stub
-				if(marque.getText().isEmpty())
+				if(marque.getText().isEmpty()) {
+					marque.setFont(f1);
 					marque.setText("Enter une marque");
+				}
+				marque.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
 			}
 			
 		});
@@ -88,13 +103,18 @@ public class ConsulterDonnees extends JPanel {
 				// TODO Auto-generated method stub
 				if(annee.getText().startsWith("Enter l'annee de production"))
 					annee.setText("");
+				annee.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
+				annee.setFont(f2);
 			}
 
 			@Override
 			public void focusLost(FocusEvent e) {
 				// TODO Auto-generated method stub
-				if(annee.getText().isEmpty())
+				if(annee.getText().isEmpty()) {
+					annee.setFont(f1);
 					annee.setText("Enter l'annee de production");
+				}
+				annee.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
 			}
 			
 		});
@@ -106,13 +126,18 @@ public class ConsulterDonnees extends JPanel {
 				// TODO Auto-generated method stub
 				if(prix.getText().startsWith("Enter un prix maximale"))
 					prix.setText("");
+				prix.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
+				prix.setFont(f2);
 			}
 
 			@Override
 			public void focusLost(FocusEvent e) {
 				// TODO Auto-generated method stub
-				if(prix.getText().isEmpty())
+				if(prix.getText().isEmpty()) {
+					prix.setFont(f1);
 					prix.setText("Enter un prix maximale");
+				}
+				prix.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
 			}
 			
 		});

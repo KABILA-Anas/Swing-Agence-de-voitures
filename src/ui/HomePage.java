@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.util.ArrayList;
 
@@ -14,6 +15,12 @@ import gestionLocations.Agence.VoitureEstLoueException;
 import gestionLocations.Agence.VoitureNotFoundException;
 
 public class HomePage extends JFrame {
+	
+	public static Color Persian = new Color(27, 153, 139);
+	public static Color Magnolia = new Color(248, 241, 255);
+	public static Color Thistle = new Color(222, 205, 245);
+	public static Color Lavender = new Color(101, 97, 118);
+	public static Color Liver = new Color(83, 77, 86);
 	
 	private Container myContent;
 	private  JTabbedPane header;
