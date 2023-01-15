@@ -22,6 +22,7 @@ import ui.AjouterVoiture.PrixEmptyException;
 
 public class LouerVoiture extends JPanel {
 	RendreVoiture RV;
+	
 
 	public LouerVoiture(JFrame myframe , Agence A) {
 	
@@ -50,16 +51,19 @@ public class LouerVoiture extends JPanel {
 		columns.add(Annee);
 		columns.add(Prix);
 		columns.add(new JPanel());
-		columns.setBackground(Color.DARK_GRAY);
+		columns.setBackground(HomePage.Olive);
 		
 		this.add(Box.createVerticalStrut(15));
 		this.add(columns);
 		
 		int i=1;
+		boolean col = false;
 		while(I.hasNext()) {
 			Voiture V = (Voiture)I.next();
 			JButton Louer = new JButton("  Louer  ");
 			Louer.setName(Integer.toString(i++));
+			Louer.setForeground(Color.WHITE);
+			Louer.setBackground(HomePage.Flame);
 			JPanel tmp = new JPanel();
 			tmp.setMaximumSize(new Dimension(600, 35));
 			tmp.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
@@ -69,6 +73,10 @@ public class LouerVoiture extends JPanel {
 			tmp.add(new JLabel(Integer.toString(V.getAnnee_production())));
 			tmp.add(new JLabel(Integer.toString(V.getPrix())));
 			tmp.add(Louer);
+			if((col = !col))
+				tmp.setBackground(HomePage.Floral);
+			else
+				tmp.setBackground(Color.WHITE);
 			this.add(tmp);
 			
 			Louer.addActionListener(new ActionListener() {

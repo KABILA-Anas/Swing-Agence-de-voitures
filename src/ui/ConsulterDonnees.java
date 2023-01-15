@@ -47,7 +47,10 @@ public class ConsulterDonnees extends JPanel {
 		prix = new JTextField("Enter un prix maximale");
 		search = new JButton("Search");
 		
-		search.setBackground(Color.DARK_GRAY);
+		//myContent.setBackground(Color.WHITE);
+		
+		
+		search.setBackground(HomePage.Eerie);
 		search.setForeground(Color.WHITE);
 		
 		//inputs.setSize(new Dimension(300, 100));
@@ -147,7 +150,7 @@ public class ConsulterDonnees extends JPanel {
 		
 		JPanel P = new JPanel();
 		P.setLayout(new BoxLayout(P, BoxLayout.Y_AXIS));
-		P.setBackground(Color.LIGHT_GRAY);
+		//P.setBackground(Color.LIGHT_GRAY);
 		//P.setAlignmentY(LEFT_ALIGNMENT);
 		
 		P.add(P.add(Box.createVerticalStrut(15)));
@@ -160,6 +163,9 @@ public class ConsulterDonnees extends JPanel {
 		P.add(prix);
 		P.add(P.add(Box.createVerticalStrut(10)));
 		P.add(search);
+		VP.setBackground(Color.WHITE);
+		P.setBackground(HomePage.Pale);
+		CT.setBackground(Color.WHITE);
 		add("West", P);
 		add("North", CT);
 		add("Center", VP);
@@ -185,6 +191,10 @@ public class ConsulterDonnees extends JPanel {
 					
 					removeAll();
 					VP = new VoituresPanel(A.selectionne(IC));
+					
+					VP.setBackground(Color.WHITE);
+					P.setBackground(HomePage.Pale);
+					CT.setBackground(Color.WHITE);
 					add("West", P);
 					add("North", CT);
 					add("Center", VP);
@@ -208,6 +218,10 @@ public class ConsulterDonnees extends JPanel {
 				add("Center", VP);*/
 				removeAll();
 				VP = new VoituresPanel(A.selectionne(IC));
+				
+				VP.setBackground(Color.WHITE);
+				P.setBackground(HomePage.Pale);
+				CT.setBackground(Color.WHITE);
 				add("West", P);
 				add("North", CT);
 				add("Center", VP);
@@ -226,6 +240,9 @@ public class ConsulterDonnees extends JPanel {
 				add("Center", VP);*/
 				removeAll();
 				VP = new VoituresPanel(A.lesVoituresLouees());
+				
+				VP.setBackground(Color.WHITE);
+				CT.setBackground(Color.WHITE);
 				add("North", CT);
 				add("Center", VP);
 			}
@@ -243,6 +260,9 @@ public class ConsulterDonnees extends JPanel {
 				add("Center", VP);*/
 				removeAll();
 				CP = new ClientsPanel(A.lesClients());
+				
+				CP.setBackground(Color.WHITE);
+				CT.setBackground(Color.WHITE);
 				add("North", CT);
 				add("Center", CP);
 			}
@@ -260,6 +280,9 @@ public class ConsulterDonnees extends JPanel {
 				add("Center", VP);*/
 				removeAll();
 				LP = new LocationsPanel(A.lesLocations());
+				
+				LP.setBackground(Color.WHITE);
+				CT.setBackground(Color.WHITE);
 				add("North", CT);
 				add("Center", LP);
 			}

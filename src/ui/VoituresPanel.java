@@ -38,11 +38,12 @@ public class VoituresPanel extends JPanel {
 		columns.add(Model);
 		columns.add(Annee);
 		columns.add(Prix);
-		columns.setBackground(Color.DARK_GRAY);
+		columns.setBackground(HomePage.Olive);
 		
 		this.add(Box.createVerticalStrut(15));
 		this.add(columns);
 		
+		boolean col = false;
 		while(I.hasNext()) {
 			Voiture V = (Voiture)I.next();
 			//GridBagConstraints gbc = new GridBagConstraints();
@@ -54,6 +55,10 @@ public class VoituresPanel extends JPanel {
 			tmp.add(new JLabel(V.getModele()));
 			tmp.add(new JLabel(Integer.toString(V.getAnnee_production())));
 			tmp.add(new JLabel(Integer.toString(V.getPrix())));
+			if((col = !col))
+				tmp.setBackground(HomePage.Floral);
+			else
+				tmp.setBackground(Color.WHITE);
 			this.add(tmp);
 		}
 	}

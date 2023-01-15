@@ -49,6 +49,12 @@ public class AjouterVoiture extends JPanel {
         model = new JLabel("Modèle");
         prix = new JLabel("Prix");
         annee = new JLabel("Annee");
+        
+        /*titre.setForeground(Color.WHITE);
+        marque.setForeground(Color.WHITE);
+        model.setForeground(Color.WHITE);
+        prix.setForeground(Color.WHITE);
+        annee.setForeground(Color.WHITE);*/
 
         tmarque  = new JTextField();
         tmarque.setPreferredSize(new Dimension(210, 30));
@@ -85,6 +91,7 @@ public class AjouterVoiture extends JPanel {
         model.setFont(f2);
         prix.setFont(f2);
         annee.setFont(f2);
+        
         //
         JPanel ptitre = new JPanel();
         ptitre.add(titre,BorderLayout.CENTER);
@@ -118,8 +125,8 @@ public class AjouterVoiture extends JPanel {
         Form.setLayout(new BoxLayout(Form, BoxLayout.Y_AXIS));
         //Borders
         Form.setBorder(new BevelBorder(BevelBorder.RAISED) );
-        submit.setBorder(BorderFactory.createLineBorder(Color.RED));
-        reset.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+        //submit.setBorder(BorderFactory.createLineBorder(Color.RED));
+        //reset.setBorder(BorderFactory.createLineBorder(Color.GREEN));
         //
         Form.add(ptitre);
         Form.add(Form.add(Box.createVerticalStrut(40)));
@@ -135,24 +142,19 @@ public class AjouterVoiture extends JPanel {
         //Form.add(Form.add(Box.createVerticalStrut(10)));
         //Actions
         
-        
-        
-        /*tmarque.addFocusListener(new FocusListener() {
-
-			@Override
-			public void focusGained(FocusEvent e) {
-				// TODO Auto-generated method stub
-				tmarque.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
-				
-			}
-
-			@Override
-			public void focusLost(FocusEvent e) {
-				// TODO Auto-generated method stub
-				tmarque.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
-			}
-			
-		});*/
+        ///Backgrounds
+        this.setBackground(Color.WHITE);
+        Form.setBackground(HomePage.Pale);
+        ptitre.setBackground(HomePage.Pale);
+        pmarque.setBackground(HomePage.Pale);
+        pmodel.setBackground(HomePage.Pale);
+        pannee.setBackground(HomePage.Pale);
+        pprix.setBackground(HomePage.Pale);
+        pbuttons.setBackground(HomePage.Pale);
+        reset.setBackground(HomePage.Floral);
+        //reset.setForeground(Color.WHITE);
+        submit.setBackground(HomePage.Eerie);
+        submit.setForeground(Color.WHITE);
         
         submit.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {

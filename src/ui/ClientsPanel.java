@@ -35,11 +35,12 @@ public ClientsPanel(Iterator<Client> I) {
 		columns.add(Prenom);
 		columns.add(Cin);
 		columns.add(Civilite);
-		columns.setBackground(Color.DARK_GRAY);
+		columns.setBackground(HomePage.Olive);
 		
 		this.add(Box.createVerticalStrut(15));
 		this.add(columns);
 		
+		boolean col = false;
 		while(I.hasNext()) {
 			Client C = (Client)I.next();
 			//GridBagConstraints gbc = new GridBagConstraints();
@@ -51,6 +52,10 @@ public ClientsPanel(Iterator<Client> I) {
 			tmp.add(new JLabel(C.getPrenom()));
 			tmp.add(new JLabel(C.getCin()));
 			tmp.add(new JLabel(C.getCivilite()));
+			if((col = !col))
+				tmp.setBackground(HomePage.Floral);
+			else
+				tmp.setBackground(Color.WHITE);
 			this.add(tmp);
 		}
 	}

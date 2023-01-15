@@ -16,11 +16,11 @@ import gestionLocations.Agence.VoitureNotFoundException;
 
 public class HomePage extends JFrame {
 	
-	public static Color Persian = new Color(27, 153, 139);
-	public static Color Magnolia = new Color(248, 241, 255);
-	public static Color Thistle = new Color(222, 205, 245);
-	public static Color Lavender = new Color(101, 97, 118);
-	public static Color Liver = new Color(83, 77, 86);
+	public static Color Pale = new Color(204, 197, 185);
+	public static Color Floral = new Color(255, 252, 242);
+	public static Color Eerie = new Color(37, 36, 34);
+	public static Color Olive = new Color(64, 61, 57);
+	public static Color Flame = new Color(235, 94, 40);
 	
 	private Container myContent;
 	private  JTabbedPane header;
