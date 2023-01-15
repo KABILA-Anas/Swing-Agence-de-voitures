@@ -4,6 +4,8 @@ import gestionLocations.Agence;
 import gestionLocations.Voiture;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,9 +43,9 @@ public class AjouterVoiture extends JPanel {
 
         submit = new JButton("Enregistrer");
         submit.setBackground(Color.GREEN);
-        submit.setPreferredSize(new Dimension(100, 30));
+        submit.setPreferredSize(new Dimension(200, 30));
         reset = new JButton("Reset");
-        reset.setPreferredSize(new Dimension(100, 30));
+        reset.setPreferredSize(new Dimension(200, 30));
         reset.setBackground(Color.LIGHT_GRAY);
         //Customizing
         titre.setFont(f1);
@@ -82,9 +84,11 @@ public class AjouterVoiture extends JPanel {
         //
         Form = new JPanel();
         Form.setLayout(new BoxLayout(Form, BoxLayout.Y_AXIS));
-        Form.add(Form.add(Box.createVerticalStrut(30)));
+        Form.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
+        submit.setBorder(BorderFactory.createLineBorder(Color.black));
+        //Form.add(Form.add(Box.createVerticalStrut(30)));
         Form.add(ptitre);
-        Form.add(Form.add(Box.createVerticalStrut(10)));
+        Form.add(Form.add(Box.createVerticalStrut(40)));
         Form.add(pmarque);
         Form.add(Form.add(Box.createVerticalStrut(10)));
         Form.add(pmodel);
@@ -94,6 +98,7 @@ public class AjouterVoiture extends JPanel {
         Form.add(pannee);
         Form.add(Form.add(Box.createVerticalStrut(10)));
         Form.add(pbuttons);
+        //Form.add(Form.add(Box.createVerticalStrut(10)));
         //Actions
         submit.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
@@ -128,8 +133,8 @@ public class AjouterVoiture extends JPanel {
 					LV.repaint();
 					RV.revalidate();
 					RV.repaint();
-                    System.out.println(A);
-                    JOptionPane.showMessageDialog(myContent, "Voiture est ajouté");
+
+					JOptionPane.showMessageDialog(myContent, "Voiture est ajouté");
                     tmarque.setText("");
                     tmodel.setText("");
                     tprix.setText("");
@@ -150,7 +155,11 @@ public class AjouterVoiture extends JPanel {
             }
         });
         //
-        this.add(Form,BorderLayout.NORTH);
+        JPanel FormContainer = new JPanel();
+        FormContainer.setLayout(new BoxLayout(FormContainer, BoxLayout.Y_AXIS));
+        FormContainer.add(FormContainer.add(Box.createVerticalStrut(20)));
+        FormContainer.add(Form);
+        this.add(FormContainer,BorderLayout.NORTH);
         setSize(600, 300);
         setVisible(true);
 

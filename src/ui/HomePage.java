@@ -27,7 +27,7 @@ public class HomePage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myContent = this.getContentPane();
 		
-		CD  = new ConsulterDonnees(A);
+		CD  = new ConsulterDonnees(A,myContent);
 		AV = new AjouterVoiture(A,this);
 		RV = new RendreVoiture(A, this);
 		LV = new LouerVoiture(this, A);

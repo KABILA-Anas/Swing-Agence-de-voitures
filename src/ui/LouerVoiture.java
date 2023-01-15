@@ -156,9 +156,9 @@ public class LouerVoiture extends JPanel {
 
         submit = new JButton("Enregistrer");
         submit.setBackground(Color.GREEN);
-        submit.setPreferredSize(new Dimension(100, 30));
+        submit.setPreferredSize(new Dimension(200, 30));
         reset = new JButton("Reset");
-        reset.setPreferredSize(new Dimension(100, 30));
+        reset.setPreferredSize(new Dimension(200, 30));
         reset.setBackground(Color.LIGHT_GRAY);
         //Customizing
         titre.setFont(f1);
@@ -199,7 +199,7 @@ public class LouerVoiture extends JPanel {
         Form.setLayout(new BoxLayout(Form, BoxLayout.Y_AXIS));
         Form.add(Form.add(Box.createVerticalStrut(30)));
         Form.add(ptitre);
-        Form.add(Form.add(Box.createVerticalStrut(10)));
+        Form.add(Form.add(Box.createVerticalStrut(40)));
         Form.add(pnom);
         Form.add(Form.add(Box.createVerticalStrut(10)));
         Form.add(pprenom);

@@ -30,7 +30,7 @@ public class ConsulterDonnees extends JPanel {
 	private JButton search;
 	private InterCritere IC = new InterCritere();
 	
-	public ConsulterDonnees(Agence A) {
+	public ConsulterDonnees(Agence A,Container myContent) {
 		this.setLayout(new BorderLayout());
 		CT = new ConsultTypes();
 		VP = new VoituresPanel(A.selectionne(IC));
@@ -138,23 +138,29 @@ public class ConsulterDonnees extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				IC = new InterCritere();
-				String m, a, p;
-				m = marque.getText();
-				a = annee.getText();
-				p = prix.getText();
-				if(!m.startsWith("Enter une marque"))
-					IC.addCritere(new CritereMarque(m));
-				if(!a.startsWith("Enter l'annee de production"))
-					IC.addCritere(new CritereAnneeProd(Integer.parseInt(a)));
-				if(!p.startsWith("Enter un prix maximale"))
-					IC.addCritere(new CriterePrix(Integer.parseInt(p)));
-
-				removeAll();
-				VP = new VoituresPanel(A.selectionne(IC));
-				add("West", P);
-				add("North", CT);
-				add("Center", VP);
+				
+				try {
+					IC = new InterCritere();
+					String m, a, p;
+					m = marque.getText();
+					a = annee.getText();
+					p = prix.getText();
+					if(!m.startsWith("Enter une marque"))
+						IC.addCritere(new CritereMarque(m));
+					if(!a.startsWith("Enter l'annee de production"))
+						IC.addCritere(new CritereAnneeProd(Integer.parseInt(a)));
+					if(!p.startsWith("Enter un prix maximale"))
+						IC.addCritere(new CriterePrix(Integer.parseInt(p)));
+					
+					removeAll();
+					VP = new VoituresPanel(A.selectionne(IC));
+					add("West", P);
+					add("North", CT);
+					add("Center", VP);
+				}catch(NumberFormatException exception){
+                    JOptionPane.showMessageDialog(myContent, "Annee et prix doivent etre integers");
+				}    
+				
 
 			}
 
