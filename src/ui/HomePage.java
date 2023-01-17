@@ -48,13 +48,13 @@ public class HomePage extends JFrame {
 
 		//myContent.setLayout(getLayout());
 		header = new JTabbedPane();
-		header.addTab("Consulter les donnees", CD);
-		header.addTab("Ajouter une voiture", AV);
-		header.addTab("Louer une voiture", LV);
-		header.addTab("Rendre une voiture", RV);
+		header.addTab("Consulter les donnees", new JScrollPane(CD));
+		header.addTab("Ajouter une voiture", new JScrollPane(AV));
+		header.addTab("Louer une voiture", new JScrollPane(LV));
+		header.addTab("Rendre une voiture", new JScrollPane(RV));
 		myContent.add(header);
 		//this.pack();
-		this.setSize(900, 500);
+		this.setSize(900, 550);
 		this.setLocation(200, 50);
 		this.setVisible(true);
 	}
@@ -62,13 +62,18 @@ public class HomePage extends JFrame {
 	public static void main(String[] args) {
 		
 
-		Voiture v1, v2, v3, v4, v5, v6;
+		Voiture v1, v2, v3, v4, v5, v6,v7,v8,v9,v10;
 		v1 = new Voiture("BMW", "M7", 2014, 95);
 		v2 = new Voiture("Mercedes", "Benz 1.6", 2016, 400);
 		v3 = new Voiture("Dacia", "DK", 2012, 90);
 		v4 = new Voiture("Maruti", "800 AC", 2007, 90);
 		v5 = new Voiture("Renault", "RXT", 2016, 90);
 		v6 = new Voiture("Mercedes", "Benz 1.8", 2017, 400);
+		v7 = new Voiture("Bugatti", "R9", 2020, 700);
+		v8 = new Voiture("Ferrari", "F1", 2017, 500);
+		v9 = new Voiture("Audi", "A4", 2015, 300);
+		v10 = new Voiture("Uno", "U.1", 2000, 100);
+
 		ArrayList<Voiture> V = new ArrayList<Voiture>();
 		V.add(v1);
 		V.add(v2);
@@ -76,6 +81,11 @@ public class HomePage extends JFrame {
 		V.add(v4);
 		V.add(v5);
 		V.add(v6);
+		V.add(v7);
+		V.add(v8);
+		V.add(v9);
+		V.add(v10);
+	
 		Agence agence = new Agence(V);
 		Client c1, c2, c3;
 		c1 = new Client("KABILA", "Anas", "cin1", Civilite.M);

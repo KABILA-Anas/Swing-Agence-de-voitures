@@ -17,6 +17,10 @@ import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
 
+import criteres.CritereAnneeProd;
+import criteres.CritereMarque;
+import criteres.CriterePrix;
+import criteres.InterCritere;
 import gestionLocations.*;
 import ui.AjouterVoiture.AnneeEmptyException;
 import ui.AjouterVoiture.MarqueEmptyException;
@@ -26,17 +30,72 @@ import ui.AjouterVoiture.PrixEmptyException;
 
 public class LouerVoiture extends JPanel {
 	RendreVoiture RV;
+	private JLabel inputs;
+	private JTextField marque;
+	private JTextField annee;
+	private JTextField prix;
+	private JButton search;
+	private InterCritere IC = new InterCritere();
+	JFrame myframe;
+	Agence A;
+	Container myContent;
 	
 
 	public LouerVoiture(JFrame myframe , Agence A) {
 	
+		this.myframe = myframe;
+		this.A = A;
+		myContent = myframe.getContentPane();
+		
+		Font f1 = new Font("Verdana",Font.PLAIN,12);
+		Font f2 = new Font("Verdana",Font.BOLD,12);
+		
+		this.setLayout(new BorderLayout());
 		LouerVoiture copy = this;
 		
-		Iterator<Voiture> I = (A.lesVoituresNonLouees()).iterator();
+		Iterator<Voiture> I = (A.selectionneL(IC));
 	
-		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		//this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		//this.setBorder(new EtchedBorder (Color.BLACK, Color.BLACK));
 		
+		inputs = new JLabel("Choix des criteres :");
+		marque = new JTextField("Enter une marque");
+		annee = new JTextField("Enter l'annee de production");
+		prix = new JTextField("Enter un prix maximale");
+		search = new JButton("Search");
+		
+		search.setBackground(HomePage.Eerie);
+		search.setForeground(Color.WHITE);
+		
+		//inputs.setSize(new Dimension(300, 100));
+		marque.setMaximumSize(new Dimension(340, 30));
+		annee.setMaximumSize(new Dimension(340, 30));
+		prix.setMaximumSize(new Dimension(340, 30));
+		
+		marque.setFont(f1);
+		annee.setFont(f1);
+		prix.setFont(f1);
+		
+		JPanel P = new JPanel();
+		P.setLayout(new BoxLayout(P, BoxLayout.Y_AXIS));
+		//P.setBackground(Color.LIGHT_GRAY);
+		//P.setAlignmentY(LEFT_ALIGNMENT);
+		
+		P.add(P.add(Box.createVerticalStrut(15)));
+		P.add(inputs);
+		P.add(Box.createVerticalStrut(10));
+		P.add(marque);
+		P.add(P.add(Box.createVerticalStrut(5)));
+		P.add(annee);
+		P.add(P.add(Box.createVerticalStrut(5)));
+		P.add(prix);
+		P.add(P.add(Box.createVerticalStrut(10)));
+		P.add(search);
+		P.setBackground(HomePage.Pale);
+		
+		
+		JPanel VL = new JPanel();
+		VL.setLayout(new BoxLayout(VL, BoxLayout.Y_AXIS));
 		JPanel columns = new JPanel();
 		columns.setMaximumSize(new Dimension(600, 30));
 		columns.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
@@ -58,7 +117,7 @@ public class LouerVoiture extends JPanel {
 		columns.setBackground(HomePage.Olive);
 		
 		this.add(Box.createVerticalStrut(15));
-		this.add(columns);
+		VL.add(columns);
 		
 		int i=1;
 		boolean col = false;
@@ -81,7 +140,9 @@ public class LouerVoiture extends JPanel {
 				tmp.setBackground(HomePage.Floral);
 			else
 				tmp.setBackground(Color.WHITE);
-			this.add(tmp);
+			VL.add(tmp);
+			
+			
 			
 			Louer.addActionListener(new ActionListener() {
 				
@@ -92,8 +153,17 @@ public class LouerVoiture extends JPanel {
 					
 					//Voiture à louer
 					int Vnumber = Integer.parseInt(((JButton)e.getSource()).getName());
-					List<Voiture> vnl = A.lesVoituresNonLouees();
-					Louer(myframe,A,vnl.get(Vnumber-1));
+					Iterator<Voiture> NI = (A.selectionneL(IC));
+					int j=1;
+					while(NI.hasNext()) {
+						
+						if(j == (Vnumber)) {
+							Louer(myframe,A,(Voiture)NI.next());
+							break;
+						}
+						j++;
+						NI.next();
+					}
 					
 					// this
 					removeAll();
@@ -112,6 +182,7 @@ public class LouerVoiture extends JPanel {
 					
 					
 					add(LV);
+					//LVPanel();
 					revalidate();
 					repaint();
 					
@@ -125,8 +196,384 @@ public class LouerVoiture extends JPanel {
 				
 			});
 		}
+		add("West", P);
+		add("Center", VL);
+		
+		marque.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				if(marque.getText().startsWith("Enter une marque"))
+					marque.setText("");
+				marque.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
+				marque.setFont(f2);
+				
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+				if(marque.getText().isEmpty()) {
+					marque.setFont(f1);
+					marque.setText("Enter une marque");
+				}
+				marque.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
+			}
+			
+		});
+		
+		annee.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				if(annee.getText().startsWith("Enter l'annee de production"))
+					annee.setText("");
+				annee.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
+				annee.setFont(f2);
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+				if(annee.getText().isEmpty()) {
+					annee.setFont(f1);
+					annee.setText("Enter l'annee de production");
+				}
+				annee.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
+			}
+			
+		});
+		
+		prix.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				if(prix.getText().startsWith("Enter un prix maximale"))
+					prix.setText("");
+				prix.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
+				prix.setFont(f2);
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+				if(prix.getText().isEmpty()) {
+					prix.setFont(f1);
+					prix.setText("Enter un prix maximale");
+				}
+				prix.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
+			}
+			
+		});
+		
+		search.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				try {
+					IC = new InterCritere();
+					String m, a, p;
+					m = marque.getText();
+					a = annee.getText();
+					p = prix.getText();
+					if(!m.startsWith("Enter une marque"))
+						IC.addCritere(new CritereMarque(m));
+					if(!a.startsWith("Enter l'annee de production"))
+						IC.addCritere(new CritereAnneeProd(Integer.parseInt(a)));
+					if(!p.startsWith("Enter un prix maximale"))
+						IC.addCritere(new CriterePrix(Integer.parseInt(p)));
+					
+					removeAll();
+					//VP = new VoituresPanel(A.selectionne(IC));
+					LVPanel();
+					//VP.setBackground(Color.WHITE);
+					//P.setBackground(HomePage.Pale);
+					//CT.setBackground(Color.WHITE);
+					//add("West", P);
+					//add("North", CT);
+					//add("Center", VP);
+					//add("Center", VL);
+				}catch(NumberFormatException exception){
+                    JOptionPane.showMessageDialog(myContent,"Annee et prix doivent etre integers" ,"Fatal error",JOptionPane.ERROR_MESSAGE);;
+				}    
+				
+
+			}
+
+		});
 		
 	}
+	
+	
+	 public void LVPanel() {
+		   Font f1 = new Font("Verdana",Font.PLAIN,12);
+			Font f2 = new Font("Verdana",Font.BOLD,12);
+			
+			this.setLayout(new BorderLayout());
+			LouerVoiture copy = this;
+			
+			Iterator<Voiture> I = (A.selectionneL(IC));
+		
+			//this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+			//this.setBorder(new EtchedBorder (Color.BLACK, Color.BLACK));
+			
+			/*inputs = new JLabel("Choix des criteres :");
+			marque = new JTextField("Enter une marque");
+			annee = new JTextField("Enter l'annee de production");
+			prix = new JTextField("Enter un prix maximale");
+			search = new JButton("Search");
+			
+			search.setBackground(HomePage.Eerie);
+			search.setForeground(Color.WHITE);
+			
+			//inputs.setSize(new Dimension(300, 100));
+			marque.setMaximumSize(new Dimension(340, 30));
+			annee.setMaximumSize(new Dimension(340, 30));
+			prix.setMaximumSize(new Dimension(340, 30));
+			
+			marque.setFont(f1);
+			annee.setFont(f1);
+			prix.setFont(f1);*/
+			
+			JPanel P = new JPanel();
+			P.setLayout(new BoxLayout(P, BoxLayout.Y_AXIS));
+			//P.setBackground(Color.LIGHT_GRAY);
+			//P.setAlignmentY(LEFT_ALIGNMENT);
+			
+			P.add(P.add(Box.createVerticalStrut(15)));
+			P.add(inputs);
+			P.add(Box.createVerticalStrut(10));
+			P.add(marque);
+			P.add(P.add(Box.createVerticalStrut(5)));
+			P.add(annee);
+			P.add(P.add(Box.createVerticalStrut(5)));
+			P.add(prix);
+			P.add(P.add(Box.createVerticalStrut(10)));
+			P.add(search);
+			P.setBackground(HomePage.Pale);
+			
+			
+			JPanel VL = new JPanel();
+			VL.setLayout(new BoxLayout(VL, BoxLayout.Y_AXIS));
+			JPanel columns = new JPanel();
+			columns.setMaximumSize(new Dimension(600, 30));
+			columns.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
+			columns.setLayout(new GridLayout(1, 4));
+			JLabel Marque, Model, Annee, Prix;
+			Marque = new JLabel("Marque");
+			Marque.setForeground(Color.WHITE);
+			Model = new JLabel("Model");
+			Model.setForeground(Color.WHITE);
+			Annee = new JLabel("Annee");
+			Annee.setForeground(Color.WHITE);
+			Prix = new JLabel("Prix");
+			Prix.setForeground(Color.WHITE);
+			columns.add(Marque);
+			columns.add(Model);
+			columns.add(Annee);
+			columns.add(Prix);
+			columns.add(new JPanel());
+			columns.setBackground(HomePage.Olive);
+			
+			this.add(Box.createVerticalStrut(15));
+			VL.add(columns);
+			
+			int i=1;
+			boolean col = false;
+			while(I.hasNext()) {
+				Voiture V = (Voiture)I.next();
+				JButton Louer = new JButton("  Louer  ");
+				Louer.setName(Integer.toString(i++));
+				Louer.setForeground(Color.WHITE);
+				Louer.setBackground(HomePage.Flame);
+				JPanel tmp = new JPanel();
+				tmp.setMaximumSize(new Dimension(600, 35));
+				tmp.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
+				tmp.setLayout(new GridLayout(1, 4));
+				tmp.add(new JLabel(V.getMarque()));
+				tmp.add(new JLabel(V.getModele()));
+				tmp.add(new JLabel(Integer.toString(V.getAnnee_production())));
+				tmp.add(new JLabel(Integer.toString(V.getPrix())));
+				tmp.add(Louer);
+				if((col = !col))
+					tmp.setBackground(HomePage.Floral);
+				else
+					tmp.setBackground(Color.WHITE);
+				VL.add(tmp);
+				
+				
+				
+				Louer.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						
+						
+						//Voiture à louer
+						int Vnumber = Integer.parseInt(((JButton)e.getSource()).getName());
+						//List<Voiture> vnl = A.lesVoituresNonLouees();
+						Iterator<Voiture> NI = (A.selectionneL(IC));
+						int j=1;
+						while(NI.hasNext()) {
+							
+							if(j == (Vnumber)) {
+								Louer(myframe,A,(Voiture)NI.next());
+								break;
+							}
+							j++;
+							NI.next();
+						}
+						
+						
+						// this
+						removeAll();
+						LouerVoiture LV = new LouerVoiture(myframe, A);
+						RendreVoiture RVC = new RendreVoiture(A, myframe);
+						
+						RVC.setLV(LV);
+						LV.setRV(RV);
+						
+						//Updating rendre vioture
+						RV.removeAll();
+						RV.add(RVC);
+						//RV.setLV(LV);
+						RV.revalidate();
+						RV.repaint();
+						
+						
+						add(LV);
+						LVPanel();
+						
+						revalidate();
+						repaint();
+						
+						
+						
+						/*removeAll();
+						add(new LouerVoiture(A));
+						revalidate();
+						repaint();*/
+					}
+					
+				});
+			}
+			add("West", P);
+			add("Center", VL);
+			
+			/*marque.addFocusListener(new FocusListener() {
+
+				@Override
+				public void focusGained(FocusEvent e) {
+					// TODO Auto-generated method stub
+					if(marque.getText().startsWith("Enter une marque"))
+						marque.setText("");
+					marque.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
+					marque.setFont(f2);
+					
+				}
+
+				@Override
+				public void focusLost(FocusEvent e) {
+					// TODO Auto-generated method stub
+					if(marque.getText().isEmpty()) {
+						marque.setFont(f1);
+						marque.setText("Enter une marque");
+					}
+					marque.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
+				}
+				
+			});
+			
+			annee.addFocusListener(new FocusListener() {
+
+				@Override
+				public void focusGained(FocusEvent e) {
+					// TODO Auto-generated method stub
+					if(annee.getText().startsWith("Enter l'annee de production"))
+						annee.setText("");
+					annee.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
+					annee.setFont(f2);
+				}
+
+				@Override
+				public void focusLost(FocusEvent e) {
+					// TODO Auto-generated method stub
+					if(annee.getText().isEmpty()) {
+						annee.setFont(f1);
+						annee.setText("Enter l'annee de production");
+					}
+					annee.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
+				}
+				
+			});
+			
+			prix.addFocusListener(new FocusListener() {
+
+				@Override
+				public void focusGained(FocusEvent e) {
+					// TODO Auto-generated method stub
+					if(prix.getText().startsWith("Enter un prix maximale"))
+						prix.setText("");
+					prix.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
+					prix.setFont(f2);
+				}
+
+				@Override
+				public void focusLost(FocusEvent e) {
+					// TODO Auto-generated method stub
+					if(prix.getText().isEmpty()) {
+						prix.setFont(f1);
+						prix.setText("Enter un prix maximale");
+					}
+					prix.setBorder(new EtchedBorder (Color.BLACK, Color.WHITE));
+				}
+				
+			});
+			
+			search.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+					try {
+						IC = new InterCritere();
+						String m, a, p;
+						m = marque.getText();
+						a = annee.getText();
+						p = prix.getText();
+						if(!m.startsWith("Enter une marque"))
+							IC.addCritere(new CritereMarque(m));
+						if(!a.startsWith("Enter l'annee de production"))
+							IC.addCritere(new CritereAnneeProd(Integer.parseInt(a)));
+						if(!p.startsWith("Enter un prix maximale"))
+							IC.addCritere(new CriterePrix(Integer.parseInt(p)));
+						
+						removeAll();
+						//VP = new VoituresPanel(A.selectionne(IC));
+						
+						//VP.setBackground(Color.WHITE);
+						P.setBackground(HomePage.Pale);
+						//CT.setBackground(Color.WHITE);
+						add("West", P);
+						//add("North", CT);
+						//add("Center", VP);
+						add("Center", VL);
+					}catch(NumberFormatException exception){
+	                    //JOptionPane.showMessageDialog(myContent,"Annee et prix doivent etre integers" ,"Fatal error",JOptionPane.ERROR_MESSAGE);;
+					}    
+					
+
+				}
+
+			});*/
+	 }
 	
 	 public void setRV(RendreVoiture RVC) {
      	RV = RVC;
