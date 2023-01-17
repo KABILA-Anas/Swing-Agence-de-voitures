@@ -29,6 +29,14 @@ public class Agence {
 	
 	
 	
+	public Iterator<Voiture> selectionneL(Critere c) {
+		ArrayList<Voiture> L = new ArrayList<Voiture>();
+		for(Voiture v : lesVoituresNonLouees())
+			if(c.estSatisfaitPar(v))
+				L.add(v);
+		return L.iterator();
+	}
+	
 	public Iterator<Voiture> selectionne(Critere c) {
 		ArrayList<Voiture> L = new ArrayList<Voiture>();
 		for(Voiture v : voitures)
