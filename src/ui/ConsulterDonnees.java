@@ -168,7 +168,7 @@ public class ConsulterDonnees extends JPanel {
 		CT.setBackground(Color.WHITE);
 		add("West", P);
 		add("North", CT);
-		add("Center", VP);
+		add("Center",VP);
 
 		search.addActionListener(new ActionListener() {
 

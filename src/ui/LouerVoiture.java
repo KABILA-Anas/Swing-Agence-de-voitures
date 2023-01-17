@@ -47,7 +47,7 @@ public class LouerVoiture extends JPanel {
 		this.A = A;
 		myContent = myframe.getContentPane();
 		
-		
+
 		Font f1 = new Font("Verdana",Font.PLAIN,12);
 		Font f2 = new Font("Verdana",Font.BOLD,12);
 		
@@ -163,6 +163,9 @@ public class LouerVoiture extends JPanel {
 							break;
 						}
 						j++;
+
+						NI.next();
+
 					}
 					
 					// this
@@ -182,6 +185,7 @@ public class LouerVoiture extends JPanel {
 					
 					
 					add(LV);
+					//LVPanel();
 					revalidate();
 					repaint();
 					
@@ -426,6 +430,8 @@ public class LouerVoiture extends JPanel {
 								break;
 							}
 							j++;
+							NI.next();
+
 						}
 						
 						
@@ -446,6 +452,9 @@ public class LouerVoiture extends JPanel {
 						
 						
 						add(LV);
+
+						LVPanel();
+						
 						revalidate();
 						repaint();
 						
