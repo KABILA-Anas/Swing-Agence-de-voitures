@@ -118,6 +118,7 @@ public class LouerVoiture extends JPanel {
 		columns.setBackground(HomePage.Olive);
 		
 		this.add(Box.createVerticalStrut(15));
+		VL.add(Box.createVerticalStrut(15));
 		VL.add(columns);
 		
 		int i=1;
