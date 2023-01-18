@@ -117,8 +117,8 @@ public class LouerVoiture extends JPanel {
 		columns.add(new JPanel());
 		columns.setBackground(HomePage.Olive);
 		
-		this.add(Box.createVerticalStrut(15));
-		VL.add(Box.createVerticalStrut(15));
+		//this.add(Box.createVerticalStrut(15));
+		VL.add(Box.createVerticalStrut(25));
 		VL.add(columns);
 		
 		int i=1;
@@ -384,7 +384,8 @@ public class LouerVoiture extends JPanel {
 			columns.add(new JPanel());
 			columns.setBackground(HomePage.Olive);
 			
-			this.add(Box.createVerticalStrut(15));
+			//this.add(Box.createVerticalStrut(15));
+			VL.add(Box.createVerticalStrut(25));
 			VL.add(columns);
 			
 			int i=1;

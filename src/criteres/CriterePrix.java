@@ -12,7 +12,7 @@ public class CriterePrix implements Critere {
 	
 	@Override
 	public boolean estSatisfaitPar(Voiture v) {
-		return (v.getPrix()<prix);
+		return (v.getPrix()<=prix);
 	}
 	
 }
