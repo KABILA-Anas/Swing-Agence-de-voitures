@@ -52,9 +52,17 @@ public class Agence {
 		}
 	}
 	
-	public void ajouterVoiture(Voiture v) {
-		if(!voitureExist(v))
-			voitures.add(new Voiture(v.getMarque(), v.getModele(), v.getAnnee_production(), v.getPrix()));
+	public void ajouterVoiture(Voiture v) 
+		throws Exception
+	{
+		if(voitureExist(v))
+			throw new Exception() {
+				public String toString() {
+					return "Voiture déja existe!!!!!!!!!!!!!!";
+				}
+			};
+			
+		voitures.add(new Voiture(v.getMarque(), v.getModele(), v.getAnnee_production(), v.getPrix()));
 	}
 	
 	public void loueVoiture(Client client, Voiture v) throws VoitureNotFoundException, VoitureEstLoueException, ClientEstLoueurException {
@@ -68,7 +76,10 @@ public class Agence {
 	}
 	
 	public boolean voitureExist(Voiture V) {
-		return voitures.contains(V);
+		for(Voiture voiture : voitures)
+			if(voiture.equals(V))
+				return true;
+		return false;
 	}
 	
 	/*public boolean estLoueur(Client client) {
